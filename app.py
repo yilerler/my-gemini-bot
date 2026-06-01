@@ -12,13 +12,13 @@ app = Flask(__name__)
 LINE_CHANNEL_ACCESS_TOKEN = os.environ.get('LINE_CHANNEL_ACCESS_TOKEN')
 LINE_CHANNEL_SECRET = os.environ.get('LINE_CHANNEL_SECRET')
 GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
-BOT_NAME = os.environ.get('BOT_NAME', '@小助手')
+BOT_NAME = os.environ.get('BOT_NAME', '@Gemini')
 
 # --- 初始化設定 ---
 configuration = Configuration(access_token=LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
 genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-2-flash')
+model = genai.GenerativeModel('gemini-1.5-flash')
 
 # ==========================================
 # 輔助函式：清理 Markdown 符號 (作為獨立工具，不加裝飾器)
