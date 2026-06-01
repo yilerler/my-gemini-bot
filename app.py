@@ -18,7 +18,7 @@ BOT_NAME = os.environ.get('BOT_NAME', '@小助手')
 configuration = Configuration(access_token=LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
 genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-2.5-flash')
+model = genai.GenerativeModel('gemini-2.5-pro')
 
 # ==========================================
 # 輔助函式：清理 Markdown 符號 (作為獨立工具，不加裝飾器)
