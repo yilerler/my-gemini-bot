@@ -30,6 +30,22 @@ def callback():
     return 'OK'
 
 @handler.add(MessageEvent, message=TextMessageContent)
+def clean_markdown_for_line(text):
+    # 移除粗體符號
+    text = text.replace("**", "")
+    # 移除標題的井字號 (包含空格一起清掉比較乾淨)
+    text = text.replace("### ", "")
+    text = text.replace("#### ", "")
+    # 移除分隔線
+    text = text.replace("---", "")
+    
+    # 你也可以視需求決定要不要把條列式的單星號 '*' 換成全形頓號或圓點
+    # text = text.replace("* ", "・") 
+    
+    return text.strip()
+
+# 使用範例：
+# clean_text = clean_markdown_for_line(user_message)
 def handle_message(event):
     user_message = event.message.text.strip()
 
